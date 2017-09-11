@@ -1,5 +1,5 @@
-var url = 'http://api.icndb.com/jokes/random'
-        button = document.getElementById('get-joke');
+var url = 'http://api.icndb.com/jokes/random',
+        button = document.getElementById('get-joke'),
         paragraf = document.getElementById('joke');
 
 button.addEventListener('click', function() {

@@ -1,20 +1,19 @@
-var url = 'http://api.icndb.com/jokes/random',
-        button = document.getElementById('get-joke'),
-        paragraf = document.getElementById('joke');
-        
-document.addEventListener("DOMContentLoaded", function() {
+var url = 'http://api.icndb.com/jokes/random';
+var $button = $('#get-joke').click(function() {
     getJoke();
 });
-button.addEventListener('click', function() {
+var $paragraf = $('#joke');
+
+document.addEventListener("DOMContentLoaded", function() {
     getJoke();
 });
 
 function getJoke() {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url);
-    xhr.addEventListener('load', function() {
-        var response = JSON.parse(xhr.response);
-        paragraf.innerHTML = response.value.joke;
+    $.ajax({
+        method: 'GET',
+        url: url,
+        success: function(res) {
+            $paragraf.text(res.value.joke);
+        }
     });
-    xhr.send();
 }
